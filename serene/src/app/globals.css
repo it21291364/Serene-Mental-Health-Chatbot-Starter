@@ -1,7 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "tailwindcss";
 
 @theme {
-  --color-ink-50: #f8fafc;
+  --color-ink-50:  #f8fafc;
   --color-ink-100: #f1f5f9;
   --color-ink-200: #e2e8f0;
   --color-ink-300: #cbd5e1;
@@ -13,6 +16,21 @@
   --color-ink-900: #0f172a;
 }
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root { color-scheme: light; }
-body { background-image: linear-gradient(to bottom, #e0f2fe, #ffffff); color: var(--color-ink-800); }
+body { @apply text-ink-800; background: radial-gradient(1200px 800px at 10% -10%, rgba(56,189,248,.25), transparent 60%), radial-gradient(1000px 700px at 110% 10%, rgba(244,114,182,.25), transparent 60%), linear-gradient(to bottom, #f0f9ff, #ffffff); }
+
+/* Focus for accessibility */
 :focus-visible { outline: 2px solid #38bdf8; outline-offset: 2px; }
+
+/* Pretty animations */
+@keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-10px) } }
+@keyframes gradientMove { 0% { background-position: 0% 50% } 50% { background-position: 100% 50% } 100% { background-position: 0% 50% } }
+
+/* Utility helpers */
+.button-gradient { @apply rounded-2xl text-white px-5 py-2 shadow-sm; background: linear-gradient(90deg, #0ea5e9, #a855f7, #10b981); background-size: 200% 200%; animation: gradientMove 10s ease infinite; }
+.button-gradient:hover { filter: brightness(1.05); transform: translateY(-1px); }
+.card { @apply rounded-2xl border bg-white/80 backdrop-blur; }
